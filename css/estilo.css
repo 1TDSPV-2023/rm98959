@@ -11,3 +11,17 @@
     flex-wrap: wrap;
     background-color: #000000;
 }
+
+.cabecalho img{
+    width: 30%;
+    max-width: 30%;
+    display: block;
+}
+
+.cabecalho nav{
+    display: flex;
+    justify-content: space-around;
+    width: 60%;
+    height: 100%;
+    
+}
