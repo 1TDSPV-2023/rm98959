@@ -1,4 +1,5 @@
-.conteudo{
+
+.conteudo {
     display: flex;
     flex-wrap: wrap;
     max-width: 80vw;

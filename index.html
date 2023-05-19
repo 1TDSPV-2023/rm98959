@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,34 +12,36 @@
         var nr1 = 10;
         var nr2 = 5;
 
-        //imprimindo as variáveis com console.log
-        
-        //realizando a operação de adição.
-        console.log("Operação de Adição: ")
+        //Imprimindo as variáveis com console.log()
+
+        //Realizando a operaçao de adição.
+        console.log("OPERAÇÃO DE ADIÇÃO: ");
         console.log(nr1 + nr2);
 
-        //realizando a operação de subtração.
-        console.log("Operação de Subtração: ")
+        //Realizando a operaçao de subtração.
+        console.log("OPERAÇÃO DE SUBTRAÇÃO: ");
         console.log(nr1 - nr2);
 
-        //realizando a operação de divisão.
-        console.log("Operação de Divisão: " + (nr1 / nr2));
+        //Realizando a operaçao de divisão.
+        console.log("OPERAÇÃO DE DIVISÃO: " + (nr1 / nr2));
 
-        //realizando a operação de multiplicação.
-        console.log("Operação de Multiplicação: " + (nr1 * nr2));
+        //Realizando a operaçao de multiplicação.
+        console.log("OPERAÇÃO DE MULTIPLICAÇÃO: " , (nr1 * nr2));
 
         //Obtendo o resto da divisão com o operador módulo ( % ).
         //UTILIZANDO INTERPOLAÇÃO
         console.log(`OBTENDO O RESTO DA DIVISÃO: ${nr1} % ${nr2} = ${nr1 % nr2}`);
+        
     </script> -->
 
     <script src="./js/script.js" defer></script>
+
 </head>
 
 <body>
 
     <header class="cabecalho">
-        <img src="./img/logo.png" alt="Monitor de computador.">
+        <img src="./img/logo.png" alt="Monigtor de computador.">
         <nav id="menu">
             <a href="#">Item-1</a>
             <a href="#">Item-2</a>
@@ -49,34 +52,33 @@
     <h2 class="tit-sec">Seção Foto</h2>
 
     <div>
-        <!--<button name="botão" onclick="alert(this.name)">CLICK</button>-->
-    
+        <!-- <button name="botao" onclick="alert(document.querySelector('.conteudo img').src)">CLICK</button> -->
         <button>CLICK</button>
     </div>
-    
+ 
     <section class="conteudo">
         <div>
-            <img src="./img/lobo1.jpg" alt="lobo">
+            <img src="./img/lobo1.jpg" alt="Lobo">
             <p>Legenda</p>
         </div>
         <div>
-            <img src="./img/lobo2.jpg" alt="lobo">
+            <img src="./img/lobo2.jpg" alt="Lobo">
             <p>Legenda</p>
         </div>
         <div>
-            <img src="./img/lobo3.jpg" alt="lobo">
+            <img src="./img/lobo3.jpg" alt="Lobo">
             <p>Legenda</p>
         </div>
         <div>
-            <img src="./img/lobo4.jpg" alt="lobo">
+            <img src="./img/lobo4.jpg" alt="Lobo">
             <p>Legenda</p>
         </div>
         <div>
-            <img src="./img/lobo5.jpg" alt="lobo">
+            <img src="./img/lobo5.jpg" alt="Lobo">
             <p>Legenda</p>
         </div>
         <div>
-            <img src="./img/lobo6.jpg" alt="lobo">
+            <img src="./img/lobo6.jpg" alt="Lobo">
             <p>Legenda</p>
         </div>
     </section>
@@ -88,32 +90,40 @@
             <a href="#"><img src="./img/social-2.png" alt="Logo facebook"></a>
             <a href="#"><img src="./img/social-3.png" alt="Logo twitter"></a>
         </nav> -->
-
+ 
         
-
 
     </footer>
 
     <!-- <script>
+
+        //Comentário de linha
+        /*
+        * Para comentário de Bloco
+        */
+
         //Declaração de variáveis com a palavra reservada var
         var nr1 = 10;
         var nr2 = 5;
 
         //Saída de dados com console.log()
-        console.log(nr1)
-        console.log(nr2)
+        console.log(nr1);
+        console.log(nr2);
 
-        const botoes = document.querySelectorAll("button")
-        
+        const botoes = document.querySelectorAll("button");
+
         botoes.forEach( (botao)=>{
+
             if(botao.textContent == "CLICK"){
                 botao.addEventListener("click", ()=>{
-                    alert("Hello World")
+                    alert("oi!!");
                 })
             }
-        } );
-
+        });
+    
     </script> -->
+
+    <!-- <script src="./js/script.js"></script> -->
 
 </body>
 
