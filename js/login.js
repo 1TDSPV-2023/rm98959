@@ -1,41 +1,83 @@
-"use strict";
 
-//CRIANDO OBJETOS
+//Adicione um atributo a cada objeto, sendo eles:
+//avatarUsuario
+//Este atritubuto deve conter a URL da imagem do avatar do usuário.
 
-const usuario1 = {
-    nomeUsuario : "rita-lee",
-    senhaUsuario : "00000"
-}
+//LISTA DE USUÁRIOS
+let listaDeUsuarios = [
 
-const usuario2 = {
-    nomeUsuario : "ptt01",
-    senhaUsuario : "12345"
-}
+    {
+        nomeCompleto : "José das Couves",
+        nomeUsuario : "jose",
+        senhaUsuario : "123456",
+        avatarUsuario : "./img-avatar/avatar1.png"
+    }
+    ,
+    {
+        nomeCompleto : "João Paulino",
+        nomeUsuario : "joao",
+        senhaUsuario : "123456",
+        avatarUsuario : "./img-avatar/avatar2.png"
+    }
+    ,
+    {
+        nomeCompleto : "Maria Tomaite",
+        nomeUsuario : "maria",
+        senhaUsuario : "123456",
+        avatarUsuario : "./img-avatar/avatar3.png"
+    }
+    ,
+    {
+        nomeCompleto : "Paulo da Selva",
+        nomeUsuario : "paulo",
+        senhaUsuario : "123456",
+        avatarUsuario : "../img-avatar/userpadrao.png"
+    }
+];
 
-// console.log(usuario1.nomeUsuario);
-// console.log(usuario2.nomeUsuario);
-// usuario2.nomeUsuario = "Juquina";
-// console.log(usuario2.nomeUsuario);
+localStorage.setItem("listaUser" ,JSON.stringify(listaDeUsuarios));
 
-//LISTA DE USUARIOS
-let listaDeUsuarios = [];
-listaDeUsuarios.push(usuario1)
-listaDeUsuarios.push(usuario2)
-// console.log(listaDeUsuarios);
+
 
 addEventListener("click", (evento)=>{
-    //console.log(evento.target);
+     
+    let userInput = document.querySelector("#idUser"); 
+    let passInput = document.querySelector("#idPass"); 
+        
+        //MOSTRA SENHA NO OLHINHO
+        if(evento.target.className == "fa fa-eye" || evento.target.className == "fa fa-eye-slash"){
 
-    let userInput = document.querySelector("#idUser");
-    let passInput = document.querySelector("#idPass");
+            evento.target.setAttribute("style","cursor:pointer")
 
+            if(passInput.getAttribute("type") == "password"){
+                passInput.setAttribute("type","text");
+                evento.target.setAttribute("class","fa fa-eye-slash")  
+            }else{
+                evento.target.setAttribute("style","cursor:pointer");
+                evento.target.setAttribute("class","fa fa-eye");  
+                passInput.setAttribute("type","password"); 
+            }
 
-    if(evento.target.id == "btnSubmit"){
+        }
+
+        //USUÁRIO QUE REPRESENTA OS DADOS QUE CHEGAM DO FORMULÁRIO.
+        const usuarioLogado = {
+            nomeUsuarioLogado : userInput.value,
+            senhaUsuarioLogado: passInput.value
+        }
+
+        //USUÁRIO QUEVAI REPRESENTAR OS DADOS VALIDADOS
+        let usuarioValidado = {};
+
+        let listaDeUsuariosRecuperada = JSON.parse(localStorage.getItem("listaUser"));
+
+        if(evento.target.id == "btnSubmit"){
         
         try{
-                listaDeUsuarios.forEach((usuario)=>{
+                listaDeUsuariosRecuperada.forEach((usuario)=>{
 
-                    if(userInput.value == usuario.nomeUsuario && passInput.value == usuario.senhaUsuario){
+                    if(usuarioLogado.nomeUsuarioLogado == usuario.nomeUsuario && usuarioLogado.senhaUsuarioLogado == usuario.senhaUsuario){
+                        usuarioValidado = usuario;
                         throw "USUÁRIO VALIDADO!";
                     }
                 });
@@ -43,12 +85,32 @@ addEventListener("click", (evento)=>{
                 throw "USUÁRIO OU SENHA INCORRETOS!";
 
     }catch(msg){
+
+        const msgStatus = document.querySelector("#info");
+
         if(msg == "USUÁRIO VALIDADO!"){
-            console.log("USUÁRIO VALIDADO!")
+            //Criar uma msg para o usuário
+            msgStatus.setAttribute("style","color:#00ff00");
+            msgStatus.innerHTML = `<span><strong>O usuário ${usuarioValidado.nomeCompleto} realizou o login com SUCESSO!!</strong></span>`
+
+            //Adicionar o objeto USUÁRIO-VALIDADO no LOCAL-STORAGE
+            localStorage.setItem("user-validado", JSON.stringify(usuarioValidado));
+
+            //CRIANDO A AUTENTICAÇÃO
+            let token = Math.random().toString(16).substring(2)+Math.random().toString(16).substring(2);
+            //Adicionando o token no LOCAL-STORAGE
+            localStorage.setItem("user-token", token);
+
+            //Redirect
+            setTimeout(()=>{
+                window.location.href = "../sucesso.html";
+            },3000);
+
         }else{
-            console.log("USUÁRIO OU SENHA INCORRETOS!");
+            //Criar uma msg para o usuário
+            msgStatus.setAttribute("style","color:#ff0000");
+            msgStatus.innerHTML = `<span><strong>Nome de usuário ou senha inválidos...</strong></span>`
         }
     }
-
- }
+  }
 });
